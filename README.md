@@ -11,21 +11,18 @@ To use, run:
 node server.js [path to html file]
 ```
 
-It will now be running on localhost port 8000.
+It will now be running on localhost port 8000. You can specify a different port number with the PORT environment variable.
 
 ### Integration with ngrok
 
-There is also a bash script that will:
-- Run this server
-- Set up an ngrok tunnel to expose the webpage to the internet
-- Display a qr code for the tunnel's URL, making it easy to scan with a phone
+You can run the server with an ngrok tunnel. This is useful for testing websites on a phone.
 
-I find this very useful for testing websites on my phone to see if they function as expected.
-
-**To use**:
-
-Install ngrok and Python 3, then run:
-
+First, register for an ngrok account and add your authtoken to the environment. You can do this by adding the following to your `~/.bashrc` file:
 ```
-./host_ngrok.sh [path to html file]
+export NGROK_AUTHTOKEN=your-authtoken
+```
+
+Then run the server with the ngrok option:
+```
+node server.js [path to html file] --ngrok
 ```
