@@ -2,13 +2,10 @@ const path = require("path");
 const express = require("express");
 const { ArgumentParser } = require("argparse");
 
-const app = express();
-const port = process.env.PORT || 8000;
-
-
 // argument parsing
 const parser = new ArgumentParser()
 parser.add_argument("html-path")
+parser.add_argument("--port")
 parser.add_argument("--ngrok", { action: "store_true" })
 const args = parser.parse_args()
 
@@ -17,6 +14,8 @@ if (!args["html-path"].endsWith(".html")) {
     process.exit();
 }
 
+const app = express();
+const port = process.env.PORT || args.port || 8000;
 
 // set up express server
 
